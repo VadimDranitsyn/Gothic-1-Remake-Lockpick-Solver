@@ -58,32 +58,34 @@
             margin-bottom: 16px;
         }
         .modal-actions {
-            margin-top: 24px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
         #rw-save {
-            width: 180px;
-            height: 38px;
+            width: 200px;
+            height: 40px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 800;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(200, 168, 75, 0.2);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         #rw-save:hover {
+            background-color: var(--gold-hover);
+            box-shadow: 0 4px 15px rgba(200, 168, 75, 0.35);
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
         #rw-save:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 5px rgba(200, 168, 75, 0.2);
         }
     </style>
 </head>
@@ -105,14 +107,44 @@
     </div>
 
     <script>
-        const opener = window.opener;
+        let opener = window.opener;
         if (!opener) {
-            document.body.innerHTML = "<h3 style='color:red; text-align:center; margin-top:50px;'>Error: Main window not found. Please open the rules from the main solver.</h3>";
-        } else {
-            const state = opener.state;
-            const TRANSLATIONS = opener.TRANSLATIONS;
-            const lang = state.lang;
-            const t = TRANSLATIONS[lang];
+            // Mock opener for standalone testing and layout preview
+            opener = {
+                state: {
+                    lang: "RU",
+                    n_plates: 6,
+                    rules: [[[0,1]],[[1,1]],[[2,1]],[[3,1]],[[4,1]],[[5,1]]]
+                },
+                TRANSLATIONS: {
+                    RU: {
+                        rw_title: "Правила замка",
+                        rw_header: "РЕДАКТОР ПРАВИЛ",
+                        rw_subtitle: "Какие пластины двигаются при ходе ВЛЕВО (помимо самой пластины)",
+                        rw_plate_left: "П{} влево →",
+                        rw_moves: "двигает П",
+                        rw_left: "влево",
+                        rw_right: "вправо",
+                        rw_save: "СОХРАНИТЬ"
+                    },
+                    EN: {
+                        rw_title: "Lock Rules",
+                        rw_header: "RULES EDITOR",
+                        rw_subtitle: "Which plates move when shifting LEFT (in addition to the plate itself)",
+                        rw_plate_left: "P{} left →",
+                        rw_moves: "moves P",
+                        rw_left: "left",
+                        rw_right: "right",
+                        rw_save: "SAVE"
+                    }
+                },
+                saveRulesFromPopup: () => {}
+            };
+        }
+        const state = opener.state;
+        const TRANSLATIONS = opener.TRANSLATIONS;
+        const lang = state.lang;
+        const t = TRANSLATIONS[lang];
 
             // Apply translations
             document.title = t.rw_title;
@@ -242,7 +274,6 @@
             });
 
             buildRulesUI();
-        }
     </script>
 </body>
 </html>

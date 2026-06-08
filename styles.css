@@ -72,6 +72,10 @@ body {
     white-space: nowrap;
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .header-controls {
@@ -79,6 +83,7 @@ body {
     align-items: center;
     gap: 10px;
     flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 /* Language & Topmost Switchers */
@@ -242,7 +247,8 @@ body {
 .rules-btn {
     font-size: 11px;
     height: 30px;
-    width: 100px; /* Fixed width to prevent shifting when text changes between Rules / Правила */
+    width: 115px; /* Fixed width to prevent shifting when text changes between Rules / Правила */
+    flex-shrink: 0;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -415,7 +421,10 @@ body {
     color: var(--text-color);
     font-size: 11px;
     height: 28px;
-    padding: 0 14px;
+    width: 75px; /* Fixed width to prevent shifting when text changes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s;
