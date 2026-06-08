@@ -11,10 +11,8 @@
 </head>
 <body>
     <div class="app-container" id="app-container">
-        <div class="app-content-wrapper">
-            <div class="solver-pane">
-                <!-- Header -->
-                <header class="app-header">
+        <!-- Header -->
+        <header class="app-header">
             <h1 class="header-title" id="hdr-title">⚔  GOTHIC — LOCKPICK SOLVER  ⚔</h1>
             <div class="header-controls">
                 <div class="topmost-switcher">
@@ -76,16 +74,10 @@
             </div>
         </div>
 
-                <!-- Support Button -->
-                <footer class="app-footer">
-                    <button class="support-btn" id="support-btn">💖 Support the Author</button>
-                </footer>
-            </div>
-            <div class="rules-pane">
-                <button class="close-btn" id="rules-pane-close" style="position: absolute; right: 20px; top: 20px; z-index: 10;">✕</button>
-                <iframe id="rules-iframe" src="about:blank"></iframe>
-            </div>
-        </div>
+        <!-- Support Button -->
+        <footer class="app-footer">
+            <button class="support-btn" id="support-btn">💖 Support the Author</button>
+        </footer>
 
         <!-- Modal: Support the Author -->
         <div class="modal-overlay" id="support-modal">
@@ -138,6 +130,25 @@
             </div>
         </div>
 
+        <!-- Modal: Rules Editor (Inline fallback for PiP mode) -->
+        <div class="modal-overlay" id="rules-modal">
+            <div class="modal-content rules-modal-content" style="max-width: 500px;">
+                <div class="modal-header">
+                    <h2 id="rules-modal-title">Lock Rules</h2>
+                    <button class="close-btn">✕</button>
+                </div>
+                <div class="modal-section-title" id="rules-modal-header">RULES EDITOR</div>
+                <p class="modal-subtitle" id="rules-modal-subtitle">Which plates move when shifting LEFT (in addition to the plate itself)</p>
+                
+                <div class="rules-grid" id="rules-grid">
+                    <!-- Rules configuration rows will be generated dynamically -->
+                </div>
+                
+                <div class="modal-actions" style="margin-top: 24px; display: flex; justify-content: center; padding-bottom: 10px;">
+                    <button class="gold-btn" id="rw-save">SAVE</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>

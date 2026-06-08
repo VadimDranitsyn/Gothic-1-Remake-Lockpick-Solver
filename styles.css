@@ -842,45 +842,30 @@ body {
     }
 }
 
-/* Sidebar Rules Pane Layout for side-by-side display */
-.app-content-wrapper {
+/* Rules Modal Save Button Styling */
+#rw-save {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.solver-pane {
-    width: 100%;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
+#rw-save:hover {
+    background-color: var(--gold-hover);
+    box-shadow: 0 4px 15px rgba(200, 168, 75, 0.35);
+    transform: translateY(-1px);
 }
 
-.rules-pane {
-    position: relative;
-    width: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-left: 0 solid var(--border-color);
-    background-color: var(--panel-color);
-    display: flex;
-    flex-direction: column;
-}
-
-.rules-pane iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-}
-
-.app-container.rules-open {
-    max-width: 1200px;
-}
-
-.app-container.rules-open .rules-pane {
-    width: 480px;
-    border-left: 1px solid var(--border-color);
+#rw-save:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(200, 168, 75, 0.2);
 }
