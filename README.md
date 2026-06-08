@@ -2,7 +2,16 @@
 
 An elegant, atmospheric, and highly functional utility helper to solve and visualize lockpicking combinations specifically designed for **Gothic 1 Remake**.
 
-🚀 **[Click here to open the Live Web Solver!](https://VadimDranitsyn.github.io/Gothic-1-Remake-Lockpick-Solver/)** *(Runs directly in your browser, supports mobile, desktop, and Picture-in-Picture mode!)*
+---
+
+## 🚀 Choose Your Version / Выберите версию:
+
+* 🌐 **[Open Live Web Solver / Открыть онлайн-версию в браузере](https://VadimDranitsyn.github.io/Gothic-1-Remake-Lockpick-Solver/)**
+  * *Runs directly in any browser (no download needed), supports desktop, mobile, and Picture-in-Picture float mode.*
+  * *Работает прямо в браузере без скачивания, поддерживает ПК, мобильные устройства и режим поверх окон.*
+* 💻 **[Download Standalone Desktop Version / Скачать версию для ПК (.ZIP)](Gothic%201%20Remake%20Lockpick%20Solver%20by%20Ainez.zip)**
+  * *An offline portable `.exe` application for Windows. A more convenient option if you want to run it natively without a browser.*
+  * *Автономное переносимое `.exe` приложение для Windows. Более удобный вариант, если вы хотите запускать его локально без интернета.*
 
 ---
 
