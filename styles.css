@@ -995,6 +995,11 @@ body.pip-body .app-container {
     justify-content: center;
 }
 
+#guide-header-title {
+    justify-content: center;
+    width: 100%;
+}
+
 /* Media query adaptation for mobile */
 @media (max-width: 600px) {
     .page-wrapper {
