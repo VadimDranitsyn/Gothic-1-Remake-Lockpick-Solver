@@ -150,41 +150,38 @@
         </div>
     </div>
 
-    <!-- Description Panel -->
-    <div class="premium-panel" id="desc-panel">
-        <div class="panel-header">
-            <span class="panel-title" id="desc-title">Gothic 1 Remake Lockpick Solver</span>
-        </div>
-        <div class="panel-content">
-            <p class="info-desc-text" id="desc-text">
+    <!-- Instructions Window -->
+    <div class="app-container" id="instructions-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="header-title" id="guide-header-title">⚔  GOTHIC — USER GUIDE  ⚔</h1>
+        </header>
+
+        <!-- Content Area -->
+        <div class="guide-content">
+            <!-- Description -->
+            <p class="guide-desc" id="guide-desc-text">
                 This solver is designed to find the shortest and most optimal sequence of plate shifts to pick locks in Gothic 1 Remake. The application models the behavior of lockpicking mechanics from the game and supports configuring dependency rules (when moving one plate also shifts others). The solution is calculated instantly using a Breadth-First Search (BFS) algorithm.
             </p>
-        </div>
-    </div>
 
-    <!-- Video Demo Panel -->
-    <div class="premium-panel" id="demo-panel">
-        <div class="panel-header">
-            <span class="panel-title" id="demo-title">Demonstration</span>
-        </div>
-        <video class="demo-video" src="demo.mp4" controls loop muted autoplay playsinline></video>
-    </div>
+            <!-- Video Demonstration -->
+            <div class="guide-video-wrapper">
+                <video class="guide-video" src="demo.mp4" controls loop muted autoplay playsinline></video>
+            </div>
 
-    <!-- Instructions Panel -->
-    <div class="premium-panel" id="guide-panel">
-        <div class="panel-header">
-            <span class="panel-title" id="guide-title">Quick Start Guide</span>
-        </div>
-        <div class="panel-content">
-            <ol class="guide-list">
-                <li class="guide-item" id="guide-step-1">Toggle "On Top" (PiP mode) in the header to keep the solver window visible over your game.</li>
-                <li class="guide-item" id="guide-step-2">Use the arrow buttons to set the current visual offsets of the lock plates (as they appear in the game).</li>
-                <li class="guide-item" id="guide-step-3">Set up custom lock rules if plates move together. Click "Rules" in the top right to configure which plates shift and their direction when moving a plate left.</li>
-                <li class="guide-item" id="guide-step-4">If the lock has fewer than 6 plates, leave the unused plates at "0". They will not be counted in the solution.</li>
-                <li class="guide-item" id="guide-step-5">Click "Find Solution" to calculate the path.</li>
-                <li class="guide-item" id="guide-step-6">Follow the step-by-step list of moves, or use playback controls (prev / next) to visually step through the solution.</li>
-                <li class="guide-item" id="guide-step-7">Click "Reset" to return all plates to zero and clear rules.</li>
-            </ol>
+            <!-- Steps -->
+            <div class="guide-steps-wrapper">
+                <h3 class="guide-steps-title" id="guide-steps-title">Quick Start Instructions:</h3>
+                <ol class="guide-list">
+                    <li class="guide-item" id="guide-step-1">Toggle "On Top" (PiP mode) in the header to keep the solver window visible over your game.</li>
+                    <li class="guide-item" id="guide-step-2">Use the arrow buttons to set the current visual offsets of the lock plates (as they appear in the game).</li>
+                    <li class="guide-item" id="guide-step-3">Set up custom lock rules if plates move together. Click "Rules" in the top right to configure which plates shift and their direction when moving a plate left, and click "Save".</li>
+                    <li class="guide-item" id="guide-step-4">If the lock has fewer than 6 plates, leave the unused plates at "0". They will not be counted in the solution.</li>
+                    <li class="guide-item" id="guide-step-5">Click "Find Solution" to calculate the path.</li>
+                    <li class="guide-item" id="guide-step-6">Follow the step-by-step list of moves, or use playback controls (prev / next) to visually step through the solution.</li>
+                    <li class="guide-item" id="guide-step-7">Click "Reset" to return all plates to zero and clear rules.</li>
+                </ol>
+            </div>
         </div>
     </div>
 </div>
