@@ -57,6 +57,34 @@
             padding-right: 6px;
             margin-bottom: 16px;
         }
+        .modal-actions {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+        #rw-save {
+            width: 180px;
+            height: 38px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(200, 168, 75, 0.2);
+            transition: all 0.2s ease;
+        }
+        #rw-save:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+        #rw-save:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -71,8 +99,8 @@
             <!-- Rules configuration rows will be generated dynamically -->
         </div>
 
-        <div class="modal-actions" style="margin-top: 20px; display: flex; justify-content: flex-end;">
-            <button class="solve-btn gold-btn" id="rw-save" style="padding: 10px 24px; border-radius: 5px;">SAVE</button>
+        <div class="modal-actions">
+            <button class="gold-btn" id="rw-save">SAVE</button>
         </div>
     </div>
 

@@ -114,6 +114,17 @@ body {
     box-sizing: border-box;
 }
 
+.lang-opt {
+    width: 36px;
+    padding: 0;
+}
+
+.topmost-opt {
+    width: 76px;
+    padding: 0;
+}
+
+
 .lang-opt.active,
 .topmost-opt.active {
     background-color: var(--gold-color);
@@ -231,7 +242,7 @@ body {
 .rules-btn {
     font-size: 11px;
     height: 30px;
-    padding: 0 14px;
+    width: 100px; /* Fixed width to prevent shifting when text changes between Rules / Правила */
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -817,6 +828,7 @@ body {
     
     .rules-btn {
         flex-grow: 1;
+        width: auto;
         text-align: center;
     }
 }
