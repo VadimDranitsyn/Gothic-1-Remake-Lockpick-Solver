@@ -869,3 +869,25 @@ body {
     transform: translateY(1px);
     box-shadow: 0 2px 5px rgba(200, 168, 75, 0.2);
 }
+
+/* Document PiP (Always on Top) Mode Resizing overrides */
+body.pip-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    background-color: var(--bg-color) !important;
+}
+
+body.pip-body .app-container {
+    height: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    flex-grow: 1 !important;
+}
