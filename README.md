@@ -1,6 +1,6 @@
 # Gothic 1 Remake Lockpick Solver by Ainez
 
-An elegant, atmospheric, and highly functional utility helper to solve and visualize lockpicking combinations in **Gothic 1 Remake** (and custom mods like *Returning 2.0 / New Balance*).
+An elegant, atmospheric, and highly functional utility helper to solve and visualize lockpicking combinations specifically designed for **Gothic 1 Remake**.
 
 🚀 **[Click here to open the Live Web Solver!](https://VadimDranitsyn.github.io/Gothic-1-Remake-Lockpick-Solver/)** *(Runs directly in your browser, supports mobile, desktop, and Picture-in-Picture mode!)*
 
