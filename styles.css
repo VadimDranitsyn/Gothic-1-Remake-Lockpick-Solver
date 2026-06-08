@@ -892,3 +892,120 @@ body.pip-body .app-container {
     box-shadow: none !important;
     flex-grow: 1 !important;
 }
+
+/* Page Wrapper for Solver & Info Blocks */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 720px;
+}
+
+/* Premium Panel Styling (stacked below solver) */
+.premium-panel {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.panel-header {
+    background-color: var(--panel-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    min-height: 51px;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold-color);
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.panel-content {
+    padding: 20px 24px;
+    background-color: var(--panel-color);
+}
+
+/* Description Text styling */
+.info-desc-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Demo Video styling */
+.demo-video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
+    border: none;
+}
+
+/* Guide List and circular gold-bordered numbers */
+.guide-list {
+    list-style: none;
+    counter-reset: guide-counter;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.guide-item {
+    position: relative;
+    padding-left: 36px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.guide-item::before {
+    counter-increment: guide-counter;
+    content: counter(guide-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--btn-color);
+    border: 1px solid var(--gold-color);
+    border-radius: 50%;
+    color: var(--gold-color);
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Media query adaptation for mobile */
+@media (max-width: 600px) {
+    .page-wrapper {
+        gap: 20px;
+        padding: 0 8px;
+    }
+    
+    .panel-content {
+        padding: 16px;
+    }
+    
+    .info-desc-text {
+        font-size: 12.5px;
+    }
+    
+    .guide-item {
+        font-size: 12px;
+        padding-left: 30px;
+    }
+}
