@@ -294,7 +294,7 @@ body {
 
 .plate-row {
     display: grid;
-    grid-template-columns: 92px 1fr 92px;
+    grid-template-columns: 30px 1fr auto;
     align-items: center;
     gap: 8px;
 }
@@ -820,71 +820,3 @@ body {
         text-align: center;
     }
 }
-
-/* Side-by-side Main Layout & Rules Panel */
-.app-main-layout {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    overflow: hidden;
-    transition: max-width 0.3s ease;
-}
-
-.app-left-panel {
-    width: 100%;
-    max-width: 718px; /* 720px minus borders */
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.app-rules-panel {
-    display: none;
-    flex-direction: column;
-    width: 420px;
-    background-color: var(--panel-color);
-    border-left: 1px solid var(--border-color);
-    padding: 16px 20px;
-    flex-shrink: 0;
-    overflow-y: auto;
-}
-
-.app-container.rules-open .app-rules-panel {
-    display: flex;
-}
-
-.panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 8px;
-}
-
-.panel-header h2 {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--gold-color);
-    letter-spacing: 0.5px;
-}
-
-@media (min-width: 1000px) {
-    .app-container.rules-open {
-        max-width: 1140px; /* 720px + 420px */
-    }
-}
-
-@media (max-width: 1000px) {
-    .app-rules-panel {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1000;
-        border-left: none;
-        padding: 20px;
-    }
-}
-
