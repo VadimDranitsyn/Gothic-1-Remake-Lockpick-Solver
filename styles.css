@@ -722,6 +722,7 @@ body {
     margin-bottom: 16px;
     color: var(--text-color);
     white-space: pre-line;
+    text-align: center;
 }
 
 .crypto-list {
