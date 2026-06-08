@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="app-header">
+    <div class="app-container" id="app-container">
+        <div class="app-content-wrapper">
+            <div class="solver-pane">
+                <!-- Header -->
+                <header class="app-header">
             <h1 class="header-title" id="hdr-title">⚔  GOTHIC — LOCKPICK SOLVER  ⚔</h1>
             <div class="header-controls">
                 <div class="topmost-switcher">
@@ -74,10 +76,16 @@
             </div>
         </div>
 
-        <!-- Support Button -->
-        <footer class="app-footer">
-            <button class="support-btn" id="support-btn">💖 Support the Author</button>
-        </footer>
+                <!-- Support Button -->
+                <footer class="app-footer">
+                    <button class="support-btn" id="support-btn">💖 Support the Author</button>
+                </footer>
+            </div>
+            <div class="rules-pane">
+                <button class="close-btn" id="rules-pane-close" style="position: absolute; right: 20px; top: 20px; z-index: 10;">✕</button>
+                <iframe id="rules-iframe" src="about:blank"></iframe>
+            </div>
+        </div>
 
         <!-- Modal: Support the Author -->
         <div class="modal-overlay" id="support-modal">
@@ -130,16 +138,6 @@
             </div>
         </div>
 
-        <!-- Modal: Rules Editor (Inline fallback for PiP mode) -->
-        <div class="modal-overlay" id="rules-modal">
-            <div class="modal-content" style="width: 90%; max-width: 480px; height: 90%; max-height: 520px; display: flex; flex-direction: column; padding: 15px;">
-                <div class="modal-header" style="margin-bottom: 8px;">
-                    <h2 id="rules-modal-title">Rules Editor</h2>
-                    <button class="close-btn" id="rules-modal-close">✕</button>
-                </div>
-                <iframe id="rules-iframe" src="about:blank" style="width: 100%; flex-grow: 1; border: none; background: transparent;"></iframe>
-            </div>
-        </div>
     </div>
 
     <script src="app.js"></script>

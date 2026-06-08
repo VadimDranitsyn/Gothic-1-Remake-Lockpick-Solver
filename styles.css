@@ -841,3 +841,46 @@ body {
         text-align: center;
     }
 }
+
+/* Sidebar Rules Pane Layout for side-by-side display */
+.app-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+}
+
+.solver-pane {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-pane {
+    position: relative;
+    width: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 0 solid var(--border-color);
+    background-color: var(--panel-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-pane iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+}
+
+.app-container.rules-open {
+    max-width: 1200px;
+}
+
+.app-container.rules-open .rules-pane {
+    width: 480px;
+    border-left: 1px solid var(--border-color);
+}
