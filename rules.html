@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lock Rules</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            display: block;
+            min-height: auto;
+            background-color: var(--panel-color);
+        }
+        .rules-window-container {
+            background-color: var(--panel-color);
+            width: 100%;
+            margin: 0 auto;
+        }
+        .window-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        .window-header h2 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--gold-color);
+            letter-spacing: 0.5px;
+        }
+        .modal-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gold-color);
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 4px;
+        }
+        .modal-subtitle {
+            font-size: 12px;
+            color: var(--text-color);
+            margin-bottom: 16px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .rules-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 6px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rules-window-container">
+        <div class="window-header">
+            <h2 id="rw-title">Lock Rules</h2>
+        </div>
+        <div class="modal-section-title" id="rw-header">RULES EDITOR</div>
+        <p class="modal-subtitle" id="rw-subtitle">Which plates move when shifting LEFT (in addition to the plate itself)</p>
+        
+        <div class="rules-grid" id="rules-grid">
+            <!-- Rules configuration rows will be generated dynamically -->
+        </div>
+
+        <div class="modal-actions" style="margin-top: 20px; display: flex; justify-content: flex-end;">
+            <button class="solve-btn gold-btn" id="rw-save" style="padding: 10px 24px; border-radius: 5px;">SAVE</button>
+        </div>
+    </div>
+
+    <script>
+        const opener = window.opener;
+        if (!opener) {
+            document.body.innerHTML = "<h3 style='color:red; text-align:center; margin-top:50px;'>Error: Main window not found. Please open the rules from the main solver.</h3>";
+        } else {
+            const state = opener.state;
+            const TRANSLATIONS = opener.TRANSLATIONS;
+            const lang = state.lang;
+            const t = TRANSLATIONS[lang];
+
+            // Apply translations
+            document.title = t.rw_title;
+            document.getElementById("rw-title").textContent = t.rw_title;
+            document.getElementById("rw-header").textContent = t.rw_header;
+            document.getElementById("rw-subtitle").textContent = t.rw_subtitle;
+            document.getElementById("rw-save").textContent = t.rw_save;
+
+            const grid = document.getElementById("rules-grid");
+
+            function addEffectRow(container, plateIdx, targetPlateIdx, direction) {
+                const row = document.createElement("div");
+                row.className = "effect-row";
+                
+                const movesLabel = document.createElement("span");
+                movesLabel.className = "effect-moves-lbl";
+                movesLabel.textContent = t.rw_moves;
+                row.appendChild(movesLabel);
+                
+                const targetSelect = document.createElement("select");
+                targetSelect.className = "effect-plate-sel";
+                for (let j = 0; j < state.n_plates; j++) {
+                    if (j === plateIdx) continue;
+                    const opt = document.createElement("option");
+                    opt.value = j;
+                    opt.textContent = j + 1;
+                    if (j === targetPlateIdx) opt.selected = true;
+                    targetSelect.appendChild(opt);
+                }
+                row.appendChild(targetSelect);
+                
+                const dirSelect = document.createElement("select");
+                dirSelect.className = "effect-dir-sel";
+                const dirLeftOpt = document.createElement("option");
+                dirLeftOpt.value = "1";
+                dirLeftOpt.textContent = t.rw_left;
+                if (direction === 1) dirLeftOpt.selected = true;
+                dirSelect.appendChild(dirLeftOpt);
+                
+                const dirRightOpt = document.createElement("option");
+                dirRightOpt.value = "-1";
+                dirRightOpt.textContent = t.rw_right;
+                if (direction === -1) dirRightOpt.selected = true;
+                dirSelect.appendChild(dirRightOpt);
+                row.appendChild(dirSelect);
+                
+                const deleteBtn = document.createElement("button");
+                deleteBtn.className = "effect-delete-btn";
+                deleteBtn.textContent = "✕";
+                deleteBtn.addEventListener("click", () => {
+                    row.remove();
+                });
+                row.appendChild(deleteBtn);
+                
+                container.appendChild(row);
+            }
+
+            function buildRulesUI() {
+                grid.innerHTML = "";
+                for (let i = 0; i < state.n_plates; i++) {
+                    const row = document.createElement("div");
+                    row.className = "rules-row";
+                    
+                    const label = document.createElement("div");
+                    label.className = "rules-row-lbl";
+                    label.textContent = t.rw_plate_left.replace("{}", i+1);
+                    row.appendChild(label);
+                    
+                    const effectsContainer = document.createElement("div");
+                    effectsContainer.className = "rules-effects-container";
+                    effectsContainer.id = `effects-container-${i}`;
+                    row.appendChild(effectsContainer);
+                    
+                    state.rules[i].forEach(dep => {
+                        const target = dep[0];
+                        const dir = dep[1];
+                        if (target !== i) {
+                            addEffectRow(effectsContainer, i, target, dir);
+                        }
+                    });
+                    
+                    const addBtn = document.createElement("button");
+                    addBtn.className = "add-effect-btn";
+                    addBtn.textContent = "+";
+                    addBtn.addEventListener("click", () => {
+                        const defaultTarget = (i === 0) ? 1 : 0;
+                        addEffectRow(effectsContainer, i, defaultTarget, 1);
+                    });
+                    row.appendChild(addBtn);
+                    grid.appendChild(row);
+                    
+                    if (i < state.n_plates - 1) {
+                        const sep = document.createElement("div");
+                        sep.className = "rules-separator";
+                        grid.appendChild(sep);
+                    }
+                }
+            }
+
+            // Save button handler
+            document.getElementById("rw-save").addEventListener("click", () => {
+                for (let i = 0; i < state.n_plates; i++) {
+                    const newRule = [[i, 1]];
+                    const container = document.getElementById(`effects-container-${i}`);
+                    if (container) {
+                        const rows = container.getElementsByClassName("effect-row");
+                        for (let r = 0; r < rows.length; r++) {
+                            const plateSel = rows[r].getElementsByClassName("effect-plate-sel")[0];
+                            const dirSel = rows[r].getElementsByClassName("effect-dir-sel")[0];
+                            if (plateSel && dirSel) {
+                                const target = parseInt(plateSel.value);
+                                const dir = parseInt(dirSel.value);
+                                newRule.push([target, dir]);
+                            }
+                        }
+                    }
+                    state.rules[i] = newRule;
+                }
+                opener.saveRulesFromPopup();
+                window.close();
+            });
+
+            // Track positions before close
+            window.addEventListener("beforeunload", () => {
+                localStorage.setItem("rules_x", window.screenX);
+                localStorage.setItem("rules_y", window.screenY);
+            });
+
+            buildRulesUI();
+        }
+    </script>
+</body>
+</html>
