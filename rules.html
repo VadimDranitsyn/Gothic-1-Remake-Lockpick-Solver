@@ -264,7 +264,11 @@
                     state.rules[i] = newRule;
                 }
                 opener.saveRulesFromPopup();
-                window.close();
+                if (window.parent !== window) {
+                    opener.closeRulesModal();
+                } else {
+                    window.close();
+                }
             });
 
             // Track positions before close

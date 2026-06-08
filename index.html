@@ -129,6 +129,17 @@
                 <div class="support-footer" id="sup-footer">With love, Ainez 💖</div>
             </div>
         </div>
+
+        <!-- Modal: Rules Editor (Inline fallback for PiP mode) -->
+        <div class="modal-overlay" id="rules-modal">
+            <div class="modal-content" style="width: 90%; max-width: 480px; height: 90%; max-height: 520px; display: flex; flex-direction: column; padding: 15px;">
+                <div class="modal-header" style="margin-bottom: 8px;">
+                    <h2 id="rules-modal-title">Rules Editor</h2>
+                    <button class="close-btn" id="rules-modal-close">✕</button>
+                </div>
+                <iframe id="rules-iframe" src="about:blank" style="width: 100%; flex-grow: 1; border: none; background: transparent;"></iframe>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
