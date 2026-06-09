@@ -30,8 +30,8 @@ An elegant, atmospheric, and highly functional utility helper to solve and visua
    * Click the **"Rules"** button in the top right.
    * If shifting a plate left also moves other plates, specify their direction of movement (left or right).
    * Click **"Save"** to apply rules.
-5. If the lock has fewer than 6 plates (e.g., 5 plates):
-   * Just leave the unused (6th) plate at "0" (centered). It will not participate in calculations.
+5. If the lock has fewer than 7 plates (e.g., 6 plates):
+   * Just leave the unused (7th) plate at "0" (centered). It will not participate in calculations.
 6. Click **"Find Solution"**.
 7. Follow the step-by-step list of moves displayed at the bottom, or use the playback buttons (prev / next) to visually step through the solution.
 8. Click **"Reset"** to return all plates to zero and clear rules.
@@ -46,8 +46,8 @@ An elegant, atmospheric, and highly functional utility helper to solve and visua
    * Откройте окно **«Правила»** (Rules) в правом верхнем углу.
    * Укажите, какие именно пластины сдвигаются и в какую сторону (влево или вправо) при условии сдвига исходной раскрывающейся пластины влево.
    * Нажмите **«Сохранить»** (Save) для применения.
-5. Если в замке меньше 6 пластин (например, 5 пластин):
-   * Просто оставьте лишнюю (6-ю) пластину на значении "0" (посередине). Она не будет участвовать в расчете решения.
+5. Если в замке меньше 7 пластин (например, 6 пластин):
+   * Просто оставьте лишнюю (7-ю) пластину на значении "0" (посередине). Она не будет участвовать в расчете решения.
 6. Нажмите кнопку **«Найти решение»** (Find Solution).
 7. Внизу появится пошаговый список ходов. Используйте кнопки плеера (Шаг пред / Шаг след), чтобы наглядно видеть изменение положений на каждом шаге.
 8. Кнопка **«Сброс»** (Reset) обнуляет положения пластин и сбрасывает все правила.
